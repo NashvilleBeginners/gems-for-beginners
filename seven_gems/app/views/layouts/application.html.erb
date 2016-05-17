@@ -9,12 +9,16 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-xs-2 col-xs-offset-10">
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <div class="col-xs-2 col-xs-offset-8">
+          <%= link_to "Manage Categories", categories_path %>
+        </div>
+        <div class="col-xs-2">
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
+    <%= render partial: 'layouts/flash' %>
     <%= yield %>
   </div>
 

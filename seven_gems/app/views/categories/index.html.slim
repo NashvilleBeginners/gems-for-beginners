@@ -1,0 +1,19 @@
+h1 Manage Categories
+
+.row
+  .col-xs-12
+    table.table
+      thead
+        tr
+          th Name
+          th active
+          th Edit
+      tbody
+        - @categories.each do |category|
+          tr
+            td= category.name
+            td= category.active
+            td= link_to "Edit Category", edit_category_path(category)
+.row
+  .col-xs-12
+    = link_to "New Category", new_category_path, class: "btn btn-primary"
