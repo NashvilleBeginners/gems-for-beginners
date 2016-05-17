@@ -17,12 +17,12 @@ br
             td= task.description
             td= task.category_id
             td= task.complete
-            td= link_to "Edit", edit_task_path(task), class: 'btn btn-secondary'
-            td= button_to "Complete Task", task_complete_path(task), class: 'btn btn-success'
+            td= link_to "Edit", edit_user_task_path(@user, task), class: 'btn btn-secondary'
+            td= button_to "Complete Task", user_task_complete_path(@user, task), class: 'btn btn-success'
 
 
 
 
 .row
   .col-xs-12
-    = link_to "New Task", new_task_path, class: 'btn btn-primary'
+    = link_to "New Task", new_user_task_path(@user), class: 'btn btn-primary'

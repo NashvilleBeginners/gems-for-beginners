@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'tasks#index'
 
-  resources :tasks do
-    get :complete
+  resources :users, only: :index do
+    resources :tasks do
+      get :complete
+    end
   end
 
   # Example of regular route:
