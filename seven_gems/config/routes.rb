@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'tasks#index'
 
-  resources :tasks
+  resources :tasks do
+    get :complete
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
