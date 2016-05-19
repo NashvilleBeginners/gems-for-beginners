@@ -1,4 +1,4 @@
-class TasksDecorator < ApplicationDecorator
+class TaskDecorator < ApplicationDecorator
   delegate_all
 
   def category

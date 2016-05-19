@@ -1,42 +1,49 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :user
+  load_and_authorize_resource through: :user, shallow: true
 
   def index
-    @user = current_user
-    @q = Task.ransack(params[:q])
-    @tasks = TasksDecorator.decorate_collection(@q.result(distinct: true).paginate(:page => params[:page], per_page: 5))
+    @q = @tasks.ransack(params[:q])
+    @form_options = [@q]
+    @form_options.insert(0, @user) if @user
+    @tasks = TaskDecorator.decorate_collection(@q.result(distinct: true).paginate(:page => params[:page], per_page: 5))
   end
 
   def new
-    @user = current_user
-    @task = Task.new
+
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.user_id = current_user.id
+    @user ||= current_user
+    @task = @user.tasks.build(task_params)
+
     if @task.save
       flash[:notice] = "Task created successfully"
       redirect_to user_tasks_path
     else
       flash[:error] = "Task could not be created"
-      redirect_to :back
+      render 'new'
     end
   end
 
   def edit
-    @user = current_user
-    @task = Task.find(params[:id])
+    @task ||= Task.accessible_by(current_ability).find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
-
+    @task ||= Task.accessible_by(current_ability).find(params[:id])
+    if @task.update(task_params)
+      flash[:notice] = "Task updated successfully"
+      redirect_to user_tasks_path
+    else
+      flash[:error] = "Task could not be updated"
+      render 'new'
+    end
   end
 
   def complete
-    @task = Task.find(params[:task_id])
+    @task = Task.accessible_by(current_ability).find(params[:task_id])
     @task.complete = true
     if @task.save
       flash[:notice] = "Task completed."

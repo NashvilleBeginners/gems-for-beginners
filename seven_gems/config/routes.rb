@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'tasks#index'
 
   resources :categories, except: :destroy
+  resources :tasks
 
-  resources :users, only: :index do
+  resources :users, only: [:index] do
     resources :tasks do
       get :complete
     end

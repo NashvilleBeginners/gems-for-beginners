@@ -3,11 +3,15 @@ class Ability
 
   def initialize(user)
     if user.admin?
-      can :manage, Task
+      can [:manage, :manage_all], Task
       can :manage, Category
+      can [:read, :update], User
     else
       can :manage, Task, user_id: user.id
+      cannot :manage_all, Task
+      can [:read, :update], User, id: user.id
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
