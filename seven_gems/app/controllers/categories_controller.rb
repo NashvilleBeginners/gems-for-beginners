@@ -1,16 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
-    @categories = Category.all
   end
 
   def new
-    @category = Category.new
   end
 
   def create
-    @category = Category.new(category_params)
     if @category.save
       flash[:notice] = "Category created successfully."
       redirect_to categories_path
@@ -21,7 +19,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update

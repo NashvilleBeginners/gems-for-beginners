@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @user = current_user
-    @tasks = TasksDecorator.decorate_collection(Task.paginate(:page => params[:page], per_page: 5))
+    @tasks = TasksDecorator.decorate_collection(@tasks.paginate(:page => params[:page], per_page: 5))
   end
 
   def new
