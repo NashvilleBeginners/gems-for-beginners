@@ -5,10 +5,6 @@ class TasksDecorator < ApplicationDecorator
     object.category.try(:name) || "Uncategorized"
   end
 
-  def strikethrough_description?
-    "strikethrough" if completed?
-  end
-
   def completed?
     object.complete.present?
   end
@@ -19,6 +15,14 @@ class TasksDecorator < ApplicationDecorator
     else
       h.link_to "Complete Task", h.user_task_complete_path(object.user_id, object), class: 'btn btn-success'
     end
+  end
+
+  def strikethrough_description?
+    "strikethrough" if completed?
+  end
+
+  def user
+    object.user.try(:username)
   end
 
 end

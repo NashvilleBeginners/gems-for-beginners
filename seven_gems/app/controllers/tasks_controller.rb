@@ -4,7 +4,8 @@ class TasksController < ApplicationController
 
   def index
     @user = current_user
-    @tasks = TasksDecorator.decorate_collection(@tasks.paginate(:page => params[:page], per_page: 5))
+    @q = Task.ransack(params[:q])
+    @tasks = TasksDecorator.decorate_collection(@q.result(distinct: true).paginate(:page => params[:page], per_page: 5))
   end
 
   def new

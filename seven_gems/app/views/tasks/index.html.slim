@@ -1,19 +1,45 @@
 h1 Task List
 br
 .row
-  .col-md-12
-    h2 Incomplete Tasks
+  .col-xs-12
+    h2 Search
+    = search_form_for [@user, @q] do |f|
+      .row
+        .col-xs-4
+          =f.label :description_cont, "Description"
+          =f.search_field :description_cont, class: "form-control"
+        .col-xs-4
+          =f.label :category_id_eq, "Category"
+          =f.select :category_id_eq, category_select_options, {include_blank: true}, { class: "form-control" }
+        .col-xs-4
+          =f.label :complete_eq, "Complete"
+          =f.select :complete_eq, options_for_select([false, true]), { include_blank: true}, { class: "form-control" }
+
+      br
+      .row
+        .col-xs-2
+          =f.submit "Search", class: "btn btn-primary"
+        .col-xs-2
+          = link_to "Show All", user_tasks_path(@user), class: "btn btn-button"
+
+br
+hr
+.row
+  .col-xs-12
+    h2 Tasks
     table.table
       thead
         tr
-          th Description
-          th Category
-          th Complete
+          th= sort_link(@q, :user_id, "User")
+          th= sort_link(@q, :description, "Description")
+          th= sort_link(@q, :category_name, "Category")
+          th= sort_link(@q, :complete, "Complete")
           th Edit
           th Mark as Complete
       tbody
         - @tasks.each do |task|
           tr
+            td= task.user
             td(class="#{task.strikethrough_description?}")= task.description
             td= task.category
             td= task.complete?
