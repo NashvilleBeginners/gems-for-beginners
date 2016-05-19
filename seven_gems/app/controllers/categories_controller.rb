@@ -9,27 +9,16 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    if @category.save
-      flash[:notice] = "Category created successfully."
-      redirect_to categories_path
-    else
-      flash[:error] = "Category could not be created."
-      render :new
-    end
+    @category.save
+    respond_with @category, location: categories_path
   end
 
   def edit
   end
 
   def update
-    @category = Category.find(params[:id])
-    if @category.update(category_params)
-      flash[:notice] = "Category updated successfully."
-      redirect_to categories_path
-    else
-      flash[:error] = "Category couldn't be updated."
-      redirect_to :back
-    end
+    @category.update(category_params)
+    respond_with @category, location: categories_path
   end
 
   private
