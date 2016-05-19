@@ -25,4 +25,5 @@ br
 
 .row
   .col-xs-12
+    = will_paginate @tasks, renderer: BootstrapPagination::Rails
     = link_to "New Task", new_user_task_path(@user), class: 'btn btn-primary'

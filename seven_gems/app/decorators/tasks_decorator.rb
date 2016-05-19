@@ -1,4 +1,4 @@
-class TaskDecorator < Draper::Decorator
+class TasksDecorator < ApplicationDecorator
   delegate_all
 
   def category

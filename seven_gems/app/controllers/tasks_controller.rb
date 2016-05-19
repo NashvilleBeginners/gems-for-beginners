@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @user = current_user
-    @tasks = TaskDecorator.decorate_collection(Task.all)
+    @tasks = TasksDecorator.decorate_collection(Task.paginate(:page => params[:page], per_page: 5))
   end
 
   def new
