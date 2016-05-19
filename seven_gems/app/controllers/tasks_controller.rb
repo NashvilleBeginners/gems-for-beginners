@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @user = current_user
-    @tasks = Task.all
+    @tasks = TaskDecorator.decorate_collection(Task.all)
   end
 
   def new
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
       redirect_to user_tasks_path
     else
       flash[:error] = "Task could not be created"
-      redirect_to user_tasks_path
+      redirect_to :back
     end
   end
 

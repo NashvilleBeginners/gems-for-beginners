@@ -1,4 +1,4 @@
 = simple_form_for [@user, @task] do |f|
   = f.input :description
-  = f.input :category_id
+  = f.association :category, class: 'form-control'
   = f.button :submit, class: 'btn btn-primary'

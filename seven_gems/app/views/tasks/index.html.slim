@@ -15,8 +15,8 @@ br
         - @tasks.each do |task|
           tr
             td= task.description
-            td= task.category_id
-            td= task.complete
+            td= task.category
+            td= task.complete?
             td= link_to "Edit", edit_user_task_path(@user, task), class: 'btn btn-secondary'
             td= button_to "Complete Task", user_task_complete_path(@user, task), class: 'btn btn-success'
 
