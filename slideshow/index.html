@@ -7,7 +7,7 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                  <h1>7 Gems You'll Encounter as a Rails Dev</h1>
+                  <h1>7 Gems You'll Meet as a Rails Dev</h1>
                   <ul>
                     <li>
                       Devise
@@ -19,16 +19,16 @@
                       Ransack
                     </li>
                     <li>
-                      Aasm
-                    </li>
-                    <li>
-                      PaperTrail
+                      Draper
                     </li>
                     <li>
                       Will Paginate
                     </li>
                     <li>
-                      Draper
+                      Slim
+                    </li>
+                    <li>
+                      Simple Form
                     </li>
                   </ul>
                 </section>
@@ -36,7 +36,154 @@
                   <h1>
                     Devise
                   </h1>
-                  
+                  <p>
+                    <strong>Purpose:</strong>
+                    User authentication
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    current_user, views for sign up/sign in/sign out, password recovery/verification via email
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    Sorcery
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    CanCanCan
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    User authorization
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    - if can?(do: Thing), load_and_authorize_resource
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    Pundit
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Ransack
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    Searching and Sorting
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    search_form_for, search association attributes, sort_link
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    MetaSearch*, Sunspot*
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Draper
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    Easy-to-use decorators
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    decorate/decorate_collection, decorates_assigned, decorates_association
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    <a href="http://howwedoapps.com/2014/10/03/simple-decorator-pattern-implementation-in-rails">DIY decorators</a>
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Will Paginate
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    pagination
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    Model.paginate, will_paginate @model
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    Kaminari
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Slim
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    less cranky template syntax
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    no closing tags, no <%= syntax
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    ERB, HAML
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    SimpleForm
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    simpler form building
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    automatic labels, build associations, well-supported, easily customized
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    Formtastic, Rails forms
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Responders
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    DRY controllers
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    dramatically shorter controller code
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    n/a
+                  </p>
+                </section>
+                <section>
+                  <h1>
+                    Pry
+                  </h1>
+                  <p>
+                    <strong>Purpose:</strong>
+                    debugging tool
+                  </p>
+                  <p>
+                    <strong>Notable Features:</strong>
+                    navigate source code, run-time console, whereami
+                  </p>
+                  <p>
+                    <strong>Alternative:</strong>
+                    IRB
+                  </p>
                 </section>
             </div>
         </div>
