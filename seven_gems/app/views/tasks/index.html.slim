@@ -14,16 +14,18 @@ br
       tbody
         - @tasks.each do |task|
           tr
-            td= task.description
+            td(class="#{task.strikethrough_description?}")= task.description
             td= task.category
             td= task.complete?
             td= link_to "Edit", edit_user_task_path(@user, task), class: 'btn btn-secondary'
-            td= button_to "Complete Task", user_task_complete_path(@user, task), class: 'btn btn-success'
+            td= task.complete_link
 
 
 
 
 .row
   .col-xs-12
-    = will_paginate @tasks, renderer: BootstrapPagination::Rails
+    = will_paginate @tasks
+.row
+  .col-xs-12
     = link_to "New Task", new_user_task_path(@user), class: 'btn btn-primary'

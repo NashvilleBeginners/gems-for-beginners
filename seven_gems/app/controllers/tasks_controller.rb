@@ -34,6 +34,15 @@ class TasksController < ApplicationController
   end
 
   def complete
+    @task = Task.find(params[:task_id])
+    @task.complete = true
+    if @task.save
+      flash[:notice] = "Task completed."
+      redirect_to user_tasks_path
+    else
+      flash[:error] = "Task couldn't be completed."
+      redirect_to :back
+    end
   end
 
   private
